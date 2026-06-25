@@ -112,15 +112,11 @@
   .footer-meta { font-size: 13px; color: var(--text-muted); }
   .hero-layout { display: flex; align-items: center; gap: 48px; }
   .hero-text { flex: 1; }
-  .hero-photo { flex-shrink: 0; }
-  .photo-frame { width: 180px; height: 180px; border-radius: 50%; padding: 4px; background: linear-gradient(135deg, var(--accent), #7B61FF, var(--accent-warm)); animation: float 6s ease-in-out infinite; }
-  .photo-frame img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 4px solid var(--bg); }
   @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
   @media (max-width: 768px) {
     .hero-layout { flex-direction: column-reverse; text-align: center; }
     .hero-actions { justify-content: center; }
     .hero-badge { margin: 0 auto 24px; }
-    .photo-frame { width: 140px; height: 140px; }
     .hero h1 { font-size: 40px; }
     .skills-grid { grid-template-columns: 1fr; }
     .cert-flex { grid-template-columns: 1fr; }
