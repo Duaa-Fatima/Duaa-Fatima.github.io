@@ -2,449 +2,188 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Duaa Fatima · AI Engineer</title>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Crimson+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Duaa Fatima, AI Engineer</title>
+<meta name="description" content="AI Engineer building LLM, RAG and agentic AI systems. MS AI at NUST. First-author IEEE TAES submission.">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --bg: #F8F7F4;
-    --surface: #FFFFFF;
-    --text-primary: #111111;
-    --text-body: #3D3D3D;
-    --text-muted: #888888;
-    --accent: #3346FF;
-    --accent-warm: #FF6B35;
-    --accent-light: #EDEFFF;
-    --accent-warm-light: #FFF0E9;
-    --border: #E6E4DF;
-    --tag-bg: #F0EFEB;
-    --radius: 20px;
-    --radius-sm: 12px;
-  }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: 'Outfit', sans-serif; background: var(--bg); color: var(--text-primary); line-height: 1.7; -webkit-font-smoothing: antialiased; }
-  .container { max-width: 880px; margin: 0 auto; padding: 0 28px; }
-  .topbar { padding: 24px 0; display: flex; justify-content: space-between; align-items: center; }
-  .logo { font-size: 18px; font-weight: 700; letter-spacing: -0.5px; color: var(--text-primary); }
-  .logo span { color: var(--accent); }
-  .nav-links { display: flex; gap: 24px; list-style: none; }
-  .nav-links a { font-size: 14px; font-weight: 500; color: var(--text-muted); text-decoration: none; transition: color 0.3s; }
-  .nav-links a:hover { color: var(--accent); }
-  .hero { padding: 72px 0 56px; position: relative; }
-  .hero-badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px; border-radius: 100px; background: var(--accent-light); color: var(--accent); font-size: 13px; font-weight: 600; margin-bottom: 24px; }
-  .hero-badge .pulse { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); animation: pulse 2s infinite; }
-  @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(1.4); } }
-  .hero h1 { font-family: 'Crimson Pro', serif; font-size: 56px; font-weight: 700; letter-spacing: -2px; line-height: 1.1; margin-bottom: 20px; }
-  .hero h1 .wave { display: inline-block; animation: wave 2.5s infinite; transform-origin: 70% 70%; }
-  @keyframes wave { 0%, 100% { transform: rotate(0deg); } 10% { transform: rotate(14deg); } 20% { transform: rotate(-8deg); } 30% { transform: rotate(14deg); } 40% { transform: rotate(-4deg); } 50% { transform: rotate(10deg); } 60%, 100% { transform: rotate(0deg); } }
-  .hero-tagline { font-size: 19px; color: var(--text-body); max-width: 580px; line-height: 1.6; margin-bottom: 32px; }
-  .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
-  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; border-radius: 100px; font-size: 14px; font-weight: 600; text-decoration: none; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); border: none; cursor: pointer; }
-  .btn-primary { background: var(--accent); color: white; }
-  .btn-primary:hover { background: #2233dd; transform: translateY(-3px); box-shadow: 0 8px 24px rgba(51, 70, 255, 0.3); }
-  .btn-ghost { background: transparent; color: var(--text-body); border: 1.5px solid var(--border); }
-  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-3px); }
-  .section { padding: 64px 0; }
-  .section-header { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
-  .section-number { font-size: 13px; font-weight: 700; color: var(--accent); background: var(--accent-light); width: 28px; height: 28px; border-radius: 8px; display: flex; align-items: center; justify-content: center; }
-  .section-label { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); }
-  .section-title { font-family: 'Crimson Pro', serif; font-size: 36px; font-weight: 700; letter-spacing: -1px; margin-bottom: 36px; }
-  .sep { border: none; height: 1px; background: var(--border); }
-  .about-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 40px; position: relative; overflow: hidden; }
-  .about-card::after { content: ''; position: absolute; top: 0; right: 0; width: 200px; height: 200px; background: radial-gradient(circle at top right, var(--accent-light) 0%, transparent 70%); pointer-events: none; }
-  .about-card p { font-size: 16px; color: var(--text-body); line-height: 1.85; position: relative; z-index: 1; }
-  .highlight-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 32px; position: relative; z-index: 1; }
-  .h-stat { text-align: center; padding: 20px 12px; border-radius: var(--radius-sm); background: var(--bg); border: 1px solid var(--border); transition: all 0.3s; }
-  .h-stat:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.05); border-color: var(--accent); }
-  .h-stat strong { font-family: 'Crimson Pro', serif; font-size: 32px; font-weight: 700; color: var(--accent); display: block; }
-  .h-stat span { font-size: 12px; color: var(--text-muted); font-weight: 500; }
-  .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-  .skill-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
-  .skill-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.06); }
-  .skill-card-header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
-  .skill-emoji { font-size: 24px; width: 44px; height: 44px; border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; }
-  .skill-card:nth-child(1) .skill-emoji { background: var(--accent-light); }
-  .skill-card:nth-child(2) .skill-emoji { background: #E8FFF0; }
-  .skill-card:nth-child(3) .skill-emoji { background: var(--accent-warm-light); }
-  .skill-card:nth-child(4) .skill-emoji { background: #FFF4E8; }
-  .skill-card:nth-child(5) .skill-emoji { background: #E8F4FF; }
-  .skill-card h3 { font-size: 15px; font-weight: 700; }
-  .pills { display: flex; flex-wrap: wrap; gap: 6px; }
-  .pill { font-size: 12px; padding: 5px 12px; border-radius: 100px; background: var(--tag-bg); color: var(--text-body); font-weight: 500; transition: all 0.25s; }
-  .pill:hover { background: var(--accent-light); color: var(--accent); }
-  .project-list { display: flex; flex-direction: column; gap: 20px; }
-  .project { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 32px; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
-  .project:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(0,0,0,0.07); }
-  .project-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
-  .project h3 { font-family: 'Crimson Pro', serif; font-size: 24px; font-weight: 700; letter-spacing: -0.5px; }
-  .project-badge { font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 5px 14px; border-radius: 100px; white-space: nowrap; }
-  .badge-research { background: var(--accent-light); color: var(--accent); }
-  .badge-fullstack { background: #E8FFF0; color: #1B8C4E; }
-  .badge-automation { background: var(--accent-warm-light); color: var(--accent-warm); }
-  .badge-nlp { background: #FFF4E8; color: #B5730A; }
-  .badge-saas { background: #E8F4FF; color: #0A6BB5; }
-  .project p { font-size: 15px; color: var(--text-body); line-height: 1.75; margin-bottom: 16px; }
-  .project-metric { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 600; color: var(--accent); background: var(--accent-light); padding: 6px 14px; border-radius: 100px; margin-bottom: 16px; }
-  .project-tech { display: flex; flex-wrap: wrap; gap: 6px; }
-  .project-tech span { font-size: 11px; padding: 4px 10px; border-radius: 6px; background: var(--tag-bg); color: var(--text-muted); font-weight: 600; }
-  .exp-item { display: grid; grid-template-columns: 160px 1fr; gap: 32px; padding: 28px 0; border-bottom: 1px solid var(--border); transition: all 0.3s; }
-  .exp-item:last-child { border-bottom: none; }
-  .exp-item:hover { padding-left: 12px; }
-  .exp-date { font-size: 13px; color: var(--text-muted); font-weight: 500; padding-top: 2px; }
-  .exp-role { font-size: 18px; font-weight: 700; margin-bottom: 2px; }
-  .exp-company { font-size: 15px; color: var(--accent); font-weight: 600; margin-bottom: 8px; }
-  .exp-desc { font-size: 14px; color: var(--text-body); line-height: 1.75; }
-  .edu-row { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 32px; display: flex; align-items: center; gap: 24px; }
-  .edu-icon-box { width: 56px; height: 56px; border-radius: var(--radius-sm); background: linear-gradient(135deg, var(--accent), #7B61FF); display: flex; align-items: center; justify-content: center; font-size: 26px; flex-shrink: 0; color: white; }
-  .edu-details h3 { font-size: 18px; font-weight: 700; }
-  .edu-details p { font-size: 14px; color: var(--text-body); }
-  .edu-award { display: inline-flex; align-items: center; gap: 6px; margin-top: 8px; font-size: 13px; font-weight: 600; color: var(--accent); }
-  .cert-flex { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 28px; }
-  .cert { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 16px 20px; display: flex; align-items: center; gap: 14px; transition: all 0.3s; }
-  .cert:hover { transform: translateY(-3px); box-shadow: 0 6px 16px rgba(0,0,0,0.04); border-color: var(--accent); }
-  .cert-icon { width: 36px; height: 36px; border-radius: 10px; background: var(--accent-light); display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
-  .cert-name { font-size: 14px; font-weight: 600; color: var(--text-primary); }
-  .cert-from { font-size: 12px; color: var(--text-muted); }
-  .footer-cta { text-align: center; padding: 80px 0 48px; }
-  .footer-cta h2 { font-family: 'Crimson Pro', serif; font-size: 40px; font-weight: 700; letter-spacing: -1px; margin-bottom: 12px; }
-  .footer-cta .sub { font-size: 16px; color: var(--text-body); margin-bottom: 28px; }
-  .footer-links { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 24px; }
-  .footer-meta { font-size: 13px; color: var(--text-muted); }
-  .hero-layout { display: flex; align-items: center; gap: 48px; }
-  .hero-text { flex: 1; }
-  @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
-  @media (max-width: 768px) {
-    .hero-layout { flex-direction: column-reverse; text-align: center; }
-    .hero-actions { justify-content: center; }
-    .hero-badge { margin: 0 auto 24px; }
-    .hero h1 { font-size: 40px; }
-    .skills-grid { grid-template-columns: 1fr; }
-    .cert-flex { grid-template-columns: 1fr; }
-    .highlight-stats { grid-template-columns: 1fr 1fr; }
-    .exp-item { grid-template-columns: 1fr; gap: 4px; }
-    .about-card { padding: 28px; }
-    .nav-links { display: none; }
-    .section { padding: 48px 0; }
-  }
-  html { scroll-behavior: smooth; }
-  @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-  .hero, .section { animation: fadeIn 0.7s ease-out forwards; }
+:root{--bg:#F6F7FB;--ink:#161824;--body:#3A3D4F;--mute:#6B6F85;--line:#DCDEE8;--acc:#3346FF;--accbg:#E9ECFF;--card:#fff}
+@media(prefers-color-scheme:dark){:root{--bg:#10121C;--ink:#EEF0FA;--body:#B9BDD0;--mute:#8A8EA6;--line:#272A3B;--acc:#8C9AFF;--accbg:#1B2040;--card:#161927}}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Hanken Grotesk',system-ui,sans-serif;background:var(--bg);color:var(--body);line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:var(--acc);text-decoration:none}
+a:hover{text-decoration:underline}
+a:focus-visible{outline:2px solid var(--acc);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 28px;display:grid;grid-template-columns:300px 1fr;gap:72px}
+aside{position:sticky;top:0;align-self:start;padding:72px 0 40px}
+aside h1{font-family:'Instrument Serif',serif;font-weight:400;font-size:52px;line-height:1.02;color:var(--ink);letter-spacing:-1px}
+.role{margin:16px 0 24px;font-size:16px;color:var(--ink)}
+.status{display:inline-block;font-size:13px;font-weight:600;background:var(--accbg);color:var(--acc);padding:4px 12px;border-radius:99px;margin-bottom:24px}
+aside ul{list-style:none;display:grid;gap:8px;font-size:15px}
+aside nav{margin-top:32px;display:grid;gap:6px;font-size:14px}
+aside nav a{color:var(--mute)}
+aside nav a:hover{color:var(--acc);text-decoration:none}
+.loc{margin-top:28px;font-size:13px;color:var(--mute)}
+main{padding:72px 0 48px}
+section{margin-bottom:64px}
+h2{font-family:'Instrument Serif',serif;font-weight:400;font-size:34px;color:var(--ink);letter-spacing:-.5px;margin-bottom:20px}
+.lead{font-size:18px;color:var(--ink);line-height:1.6;max-width:62ch}
+.lead+.lead{margin-top:14px;color:var(--body);font-size:16px}
+.facts{display:flex;flex-wrap:wrap;gap:32px;margin-top:28px;padding-top:24px;border-top:1px solid var(--line)}
+.facts b{display:block;font-family:'Instrument Serif',serif;font-weight:400;font-size:38px;color:var(--acc);line-height:1}
+.facts span{font-size:13px;color:var(--mute)}
+.work{padding:24px 0;border-top:1px solid var(--line)}
+.work:first-of-type{border-top:none;padding-top:0}
+.work h3{font-size:19px;color:var(--ink);font-weight:600}
+.work .meta{font-size:13px;color:var(--mute);margin:2px 0 8px}
+.work p{max-width:64ch}
+.res{margin:10px 0;font-weight:600;color:var(--ink);font-size:15px}
+.res i{font-style:normal;color:var(--acc)}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.tags span{font-size:12px;padding:3px 10px;border-radius:6px;background:var(--card);border:1px solid var(--line);color:var(--mute)}
+.links{display:flex;gap:18px;margin-top:12px;font-size:14px;font-weight:600}
+.private{color:var(--mute);font-weight:500}
+.job{display:grid;grid-template-columns:150px 1fr;gap:24px;padding:20px 0;border-top:1px solid var(--line)}
+.job:first-of-type{border-top:none;padding-top:0}
+.job time{font-size:13px;color:var(--mute);padding-top:3px}
+.job h3{font-size:17px;color:var(--ink);font-weight:600}
+.job .co{color:var(--acc);font-size:14px;font-weight:600;margin-bottom:6px}
+.job p{font-size:15px;max-width:62ch}
+dl{display:grid;grid-template-columns:170px 1fr;gap:12px 24px;font-size:15px}
+dt{color:var(--ink);font-weight:600}
+.edu{display:grid;gap:14px}
+.edu div{font-size:15px}
+.edu b{color:var(--ink);display:block;font-size:16px}
+.certs{margin-top:20px;font-size:14px;color:var(--mute)}
+.contact p{font-size:18px;color:var(--ink);max-width:50ch}
+.contact .links{font-size:16px;margin-top:16px}
+@media(max-width:820px){
+.wrap{grid-template-columns:1fr;gap:0}
+aside{position:static;padding:48px 0 8px}
+aside nav{display:none}
+aside h1{font-size:44px}
+main{padding-top:32px}
+.job,dl{grid-template-columns:1fr;gap:4px}
+dt{margin-top:10px}
+}
 </style>
 </head>
 <body>
+<div class="wrap">
 
-<div class="container">
-  <nav class="topbar">
-    <div class="logo">duaa<span>.</span></div>
-    <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#education">Education</a></li>
-    </ul>
+<aside>
+  <h1>Duaa Fatima</h1>
+  <p class="role">AI Engineer building LLM, RAG and agentic systems.</p>
+  <span class="status">Open to AI Engineer and GenAI roles</span>
+  <ul>
+    <li><a href="mailto:fatimaduaa053@gmail.com">fatimaduaa053@gmail.com</a></li>
+    <li><a href="https://www.linkedin.com/in/duaa-fatima-3b03ab260/">LinkedIn</a></li>
+    <li><a href="https://github.com/Duaa-Fatima">GitHub</a></li>
+    <li><a href="https://lnkd.in/p/dZDCtzvY">EDBOT demo video</a></li>
+  </ul>
+  <nav aria-label="Sections">
+    <a href="#about">About</a><a href="#work">Selected work</a><a href="#experience">Experience</a><a href="#skills">Skills</a><a href="#education">Education</a>
   </nav>
+  <p class="loc">Rawalpindi, Pakistan</p>
+</aside>
+
+<main>
+<section id="about">
+  <h2>About</h2>
+  <p class="lead">I build LLM systems that work outside a notebook: multi-agent coordination, RAG pipelines and content pipelines with prompt evaluation.</p>
+  <p class="lead">I'm an MS AI student at NUST (CEME) with a BS in Data Science from FAST-NUCES. My research on LLM-guided UAV swarm coordination is submitted to IEEE TAES, where I am first author. I've shipped LLM features at Indexy and ALGORYC, and I deploy with Docker, CI/CD and GCP.</p>
+  <div class="facts">
+    <div><b>88.2%</b><span>task completion, UAV swarm</span></div>
+    <div><b>80%+</b><span>ROUGE and other metrics, EdBot</span></div>
+    <div><b>100%</b><span>on 20+ voice music test cases</span></div>
+    <div><b>10+</b><span>AI-search articles shipped</span></div>
+  </div>
+</section>
+
+<section id="work">
+  <h2>Selected work</h2>
+
+  <article class="work">
+    <h3>Agentic UAV swarm coordination</h3>
+    <p class="meta">NCRA UAV Dependability Lab, research paper submitted to IEEE TAES (first author)</p>
+    <p>A three-layer agentic system for UAV swarm task allocation: an algorithmic optimizer, an LLM planning layer and a guardrail layer that enforces safety. I ran ablations across Llama-3, Mistral-7B, Qwen-2.5 and DeepSeek-LLM. Llama-3 performed best by a small margin.</p>
+    <p class="res"><i>88.2%</i> task completion, <i>86.7%</i> TCR, zero safety violations across 13 missions on real MAVLink telemetry.</p>
+    <div class="tags"><span>Llama-3</span><span>Mistral-7B</span><span>Qwen-2.5</span><span>MAVLink</span><span>Python</span><span>JSON prompt pipelines</span></div>
+    <div class="links"><span class="private">Code is private while the paper is under review</span></div>
+  </article>
+
+  <article class="work">
+    <h3>EdBot, RAG learning platform</h3>
+    <p class="meta">Full-stack project</p>
+    <p>Upload PDFs and EdBot generates PPTX slides from them. LangChain retrieval runs over a Pinecone vector database with DeepSeek as the LLM, behind a React.js frontend and a FastAPI/Flask backend.</p>
+    <p class="res"><i>80%+</i> on ROUGE and other metrics, with 1 to 1.5 minute response time.</p>
+    <div class="tags"><span>React.js</span><span>FastAPI</span><span>Flask</span><span>LangChain</span><span>Pinecone</span><span>DeepSeek</span><span>Docker</span></div>
+    <div class="links"><a href="https://lnkd.in/p/dZDCtzvY">Watch the demo</a><a href="https://github.com/Duaa-Fatima/EDBOT-A-Smart-Learning-Platform">Source on GitHub</a></div>
+  </article>
+
+  <article class="work">
+    <h3>Indexy content pipeline</h3>
+    <p class="meta">Indexy, April to June 2026</p>
+    <p>An end-to-end pipeline that generates articles structured for AI search engines (GEO). It uses the Claude API for generation, Langfuse for prompt versioning and A/B evaluation, and raw SQL migrations in Supabase (PostgreSQL) for the data layer.</p>
+    <p class="res"><i>10+</i> structured articles shipped.</p>
+    <div class="tags"><span>Claude API</span><span>Langfuse</span><span>Supabase</span><span>PostgreSQL</span><span>GCP</span><span>Python</span></div>
+  </article>
+
+  <article class="work">
+    <h3>Voice-controlled music for OpenHome</h3>
+    <p class="meta">ALGORYC, August to October 2025</p>
+    <p>I led the Audius integration for an AI voice assistant and built the intent parsing that turns voice queries into song requests. It handles "play [song] by [artist]", "play song only" and "play any song", with Spotify DJ-style transitions between tracks.</p>
+    <p class="res"><i>100%</i> accuracy across 20+ test cases.</p>
+    <div class="tags"><span>Audius API</span><span>NLP intent parsing</span><span>Python</span></div>
+  </article>
+
+  <article class="work">
+    <h3>WhatsApp scheduling agent</h3>
+    <p class="meta">Automation project</p>
+    <p>Natural-language scheduling over WhatsApp with real-time availability checks, business-hour validation and Google Calendar booking. A faculty member uses it for daily scheduling.</p>
+    <div class="tags"><span>n8n</span><span>Webhooks</span><span>Google Calendar API</span></div>
+  </article>
+</section>
+
+<section id="experience">
+  <h2>Experience</h2>
+  <div class="job"><time>Apr to Jun 2026</time><div><h3>AI Engineer</h3><div class="co">Indexy, Toronto (remote)</div><p>Built the LLM article pipeline described above, from prompt design and Langfuse evaluation to database migrations.</p></div></div>
+  <div class="job"><time>Oct 2025 to Aug 2026</time><div><h3>AI Research Engineer</h3><div class="co">NCRA UAV Dependability Lab</div><p>Architected the agentic UAV swarm system, designed JSON-structured LLM decision pipelines that hold up under GPS noise and network latency, and submitted the results to IEEE TAES as first author.</p></div></div>
+  <div class="job"><time>Aug to Oct 2025</time><div><h3>Junior Python Developer</h3><div class="co">ALGORYC</div><p>Built voice-controlled music features for OpenHome and led bi-weekly client demos.</p></div></div>
+  <div class="job"><time>Jun to Jul 2025</time><div><h3>Software Intern</h3><div class="co">Vision Technologies</div><p>Software development internship.</p></div></div>
+  <div class="job"><time>Jun to Aug 2024</time><div><h3>AI Developer Intern</h3><div class="co">UrduX, AskFast</div><p>Fine-tuned Mistral-7B with Unsloth and QLoRA for an admission-query chatbot, with a React.js and Flask interface. It was a learning project and the fine-tuned model's results were modest.</p></div></div>
+  <div class="job"><time>2023 to 2025</time><div><h3>Teaching assistant and lab demonstrator</h3><div class="co">FAST-NUCES</div><p>NLP teaching assistant, operating systems and digital logic design lab demonstrator, and discrete structures teaching assistant.</p></div></div>
+</section>
+
+<section id="skills">
+  <h2>Skills</h2>
+  <dl>
+    <dt>LLMs and GenAI</dt><dd>Prompt engineering, QLoRA fine-tuning with Unsloth, Hugging Face models, Claude API, Llama-3, Mistral-7B, Qwen-2.5, DeepSeek</dd>
+    <dt>RAG and agents</dt><dd>LangChain, Pinecone, semantic search, multi-agent systems, n8n workflows</dd>
+    <dt>Evaluation</dt><dd>Langfuse prompt versioning and A/B tests, ROUGE, ablation studies</dd>
+    <dt>Backend and data</dt><dd>Python, FastAPI, Flask, REST APIs, PostgreSQL, Supabase, PyTorch</dd>
+    <dt>Deployment</dt><dd>Docker, CI/CD pipelines, GCP, Git and GitHub</dd>
+    <dt>Frontend</dt><dd>React.js, Next.js, TypeScript, JavaScript</dd>
+  </dl>
+</section>
+
+<section id="education">
+  <h2>Education</h2>
+  <div class="edu">
+    <div><b>MS in Artificial Intelligence</b>NUST, CEME. Started September 2026.</div>
+    <div><b>BS in Data Science</b>FAST-NUCES, Islamabad. 2021 to 2025. Dean's List, Spring 2025.</div>
+  </div>
+  <p class="certs">Certifications: Google 5-Day AI Agents Intensive, Neural Networks and Deep Learning, Agile Project Management Foundation, Data Analytics using Excel.</p>
+</section>
+
+<section class="contact" id="contact">
+  <h2>Contact</h2>
+  <p>I'm looking for AI Engineer and GenAI roles. The fastest way to reach me is email.</p>
+  <div class="links"><a href="mailto:fatimaduaa053@gmail.com">Email me</a><a href="https://www.linkedin.com/in/duaa-fatima-3b03ab260/">LinkedIn</a><a href="https://github.com/Duaa-Fatima">GitHub</a></div>
+</section>
+</main>
+
 </div>
-
-<section class="hero">
-  <div class="container">
-    <div class="hero-layout">
-      <div class="hero-text">
-        <div class="hero-badge">
-          <div class="pulse"></div>
-          Open to opportunities
-        </div>
-        <h1>Hey, I'm Duaa Fatima <span class="wave">👋</span></h1>
-        <p class="hero-tagline">AI Engineer building intelligent SaaS products — from LLM-powered pipelines and RAG systems to production-ready React frontends and Python backends.</p>
-        <div class="hero-actions">
-          <a href="mailto:fatimaduaa053@gmail.com" class="btn btn-primary">
-            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            Say Hello
-          </a>
-          <a href="https://linkedin.com/in/duaa-fatima-3b03ab260" class="btn btn-ghost">LinkedIn</a>
-          <a href="https://github.com/Duaa-Fatima" class="btn btn-ghost">GitHub</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="container"><hr class="sep"></div>
-
-<section class="section" id="about">
-  <div class="container">
-    <div class="section-header">
-      <div class="section-number">01</div>
-      <span class="section-label">About Me</span>
-    </div>
-    <h2 class="section-title">The Short Version</h2>
-    <div class="about-card">
-      <p>I'm Duaa Fatima, an AI Engineer and Data Science graduate from FAST University, Islamabad. I build intelligent, production-ready SaaS products — from LLM-powered content pipelines and RAG systems to React frontends and Python backends. Currently, I work as a Research Assistant at the NCRA UAV Dependability Lab building agentic AI systems for autonomous drone swarm coordination, achieving 88.2% task completion on real MAVLink telemetry. At Indexy, I built an end-to-end LLM content generation pipeline using Claude API and Supabase (PostgreSQL), shipping 10+ AI-optimised articles and managing the full stack from prompt engineering to database schema migrations. Previously at ALGORYC, I developed features for OpenHome — an AI-powered SaaS voice assistant — integrating the Audius API to build a voice-controlled music experience with ~80% retrieval accuracy. At UrduX, I fine-tuned Mistral-7B and delivered a full-stack admissions chatbot from data pipeline to deployment. My focus across every role: build AI systems that actually work in production, ship fast, and take ownership end to end. I'm open to Full Stack AI Engineer and AI/ML Engineer roles where I can do exactly that.</p>
-    </div>
-  </div>
-</section>
-
-<div class="container"><hr class="sep"></div>
-
-<section class="section" id="skills">
-  <div class="container">
-    <div class="section-header">
-      <div class="section-number">02</div>
-      <span class="section-label">Skills & Tools</span>
-    </div>
-    <h2 class="section-title">My Toolkit</h2>
-    <div class="skills-grid">
-      <div class="skill-card">
-        <div class="skill-card-header">
-          <div class="skill-emoji">💻</div>
-          <h3>Frontend & Full Stack</h3>
-        </div>
-        <div class="pills">
-          <span class="pill">React.js</span>
-          <span class="pill">Next.js</span>
-          <span class="pill">TypeScript</span>
-          <span class="pill">JavaScript</span>
-          <span class="pill">Flask</span>
-          <span class="pill">FastAPI</span>
-          <span class="pill">REST APIs</span>
-          <span class="pill">Docker</span>
-          <span class="pill">CI/CD</span>
-        </div>
-      </div>
-      <div class="skill-card">
-        <div class="skill-card-header">
-          <div class="skill-emoji">🗄️</div>
-          <h3>Databases & Backend</h3>
-        </div>
-        <div class="pills">
-          <span class="pill">PostgreSQL</span>
-          <span class="pill">Supabase</span>
-          <span class="pill">SQL Migrations</span>
-          <span class="pill">Pinecone</span>
-          <span class="pill">Python</span>
-          <span class="pill">Node.js</span>
-          <span class="pill">Git/GitHub</span>
-        </div>
-      </div>
-      <div class="skill-card">
-        <div class="skill-card-header">
-          <div class="skill-emoji">🧠</div>
-          <h3>LLMs & Generative AI</h3>
-        </div>
-        <div class="pills">
-          <span class="pill">Claude API</span>
-          <span class="pill">Prompt Engineering</span>
-          <span class="pill">LLM Fine-tuning</span>
-          <span class="pill">Mistral-7B</span>
-          <span class="pill">Llama-3</span>
-          <span class="pill">Qwen-2.5</span>
-          <span class="pill">QLoRA / Unsloth</span>
-          <span class="pill">Langfuse</span>
-        </div>
-      </div>
-      <div class="skill-card">
-        <div class="skill-card-header">
-          <div class="skill-emoji">🤖</div>
-          <h3>RAG & Agentic AI</h3>
-        </div>
-        <div class="pills">
-          <span class="pill">RAG Pipelines</span>
-          <span class="pill">LangChain</span>
-          <span class="pill">Multi-Agent Systems</span>
-          <span class="pill">n8n</span>
-          <span class="pill">Agentic Workflows</span>
-          <span class="pill">Semantic Search</span>
-          <span class="pill">Vector DBs</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="container"><hr class="sep"></div>
-
-<section class="section" id="projects">
-  <div class="container">
-    <div class="section-header">
-      <div class="section-number">03</div>
-      <span class="section-label">Projects</span>
-    </div>
-    <h2 class="section-title">Things I've Built</h2>
-    <div class="project-list">
-
-      <div class="project">
-        <div class="project-top">
-          <h3>Indexy — AI Content Pipeline</h3>
-          <span class="project-badge badge-saas">SaaS · Full Stack</span>
-        </div>
-        <p>End-to-end LLM-powered content generation platform built for AI search visibility. I built the full stack — prompt pipelines using Claude API, Langfuse for prompt versioning and A/B evaluation, and raw SQL schema migrations in Supabase (PostgreSQL) to manage the data layer. Articles are structured for pickup by Google SGE and Perplexity.</p>
-        <div class="project-metric">📈 10+ articles shipped · 50–60% AI-friendliness score on Claude testing</div>
-        <div class="project-tech">
-          <span>Claude API</span><span>Langfuse</span><span>Supabase</span><span>PostgreSQL</span><span>Prompt Engineering</span><span>Python</span>
-        </div>
-      </div>
-
-      <div class="project">
-        <div class="project-top">
-          <h3>Agentic UAV Swarm System</h3>
-          <span class="project-badge badge-research">Research</span>
-        </div>
-        <p>A three-layer agentic AI architecture for autonomous UAV swarm task allocation. Combines an algorithmic optimizer, an LLM strategic planning layer powered by Llama-3, and a guardrail enforcement layer for safety-critical autonomous decision-making in dynamic mission environments.</p>
-        <div class="project-metric">📈 88.2% task completion · Zero safety violations · 13 missions</div>
-        <div class="project-tech">
-          <span>Llama-3</span><span>Mistral-7B</span><span>Qwen-2.5</span><span>MAVLink</span><span>Python</span><span>JSON Pipelines</span>
-        </div>
-      </div>
-
-      <div class="project">
-        <div class="project-top">
-          <h3>EdBot: RAG Educational AI</h3>
-          <span class="project-badge badge-fullstack">Full Stack</span>
-        </div>
-        <p>A full-stack RAG platform with a React.js frontend and FastAPI/Flask backend. Uses LangChain-orchestrated retrieval over a Pinecone vector DB indexing academic PDFs, with DeepSeek as the underlying LLM for accurate, context-aware responses.</p>
-        <div class="project-metric">📈 80%+ retrieval quality · 1–1.5 min response time</div>
-        <div class="project-tech">
-          <span>React.js</span><span>FastAPI</span><span>Flask</span><span>LangChain</span><span>Pinecone</span><span>RAG</span><span>Docker</span>
-        </div>
-      </div>
-
-      <div class="project">
-        <div class="project-top">
-          <h3>WhatsApp Agentic Scheduler</h3>
-          <span class="project-badge badge-automation">Automation</span>
-        </div>
-        <p>An intelligent automation pipeline that handles natural-language scheduling via WhatsApp. Integrates real-time availability checking, business-hour validation, and Google Calendar API booking — all triggered by conversational messages. Adopted by a faculty member for daily scheduling.</p>
-        <div class="project-tech">
-          <span>n8n</span><span>Webhooks</span><span>Google Calendar API</span><span>Python</span>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<div class="container"><hr class="sep"></div>
-
-<section class="section" id="experience">
-  <div class="container">
-    <div class="section-header">
-      <div class="section-number">04</div>
-      <span class="section-label">Experience</span>
-    </div>
-    <h2 class="section-title">Where I've Worked</h2>
-    <div>
-
-      <div class="exp-item">
-        <div class="exp-date">Apr 2026 · Present</div>
-        <div>
-          <div class="exp-role">AI Engineer</div>
-          <div class="exp-company">Indexy</div>
-          <div class="exp-desc">Built an end-to-end LLM-powered content generation pipeline using Claude API, producing 10+ structured articles optimised for AI search engines (Google SGE, Perplexity). Managed the full stack — prompt template versioning in Langfuse for A/B evaluation, and raw SQL schema migrations in Supabase (PostgreSQL) to maintain the content pipeline's data layer. Reviewed and iteratively improved AI-generated content quality, achieving 50–60% AI-friendliness on Claude-based testing.</div>
-        </div>
-      </div>
-
-      <div class="exp-item">
-        <div class="exp-date">Oct 2025 · Present</div>
-        <div>
-          <div class="exp-role">Research Assistant – AI Engineer</div>
-          <div class="exp-company">NCRA UAV Dependability Lab, FAST University</div>
-          <div class="exp-desc">Architected a three-layer agentic AI system (LLM planning + guardrail enforcement) for UAV swarm task allocation, achieving 88.2% task completion rate and 86.7% TCR on real MAVLink telemetry. Designed JSON-structured LLM output pipelines with multi-agent orchestration enabling reliable coordination under GPS noise and network latency. Ran ablation studies across Llama-3, Mistral-7B, Qwen-2.5, and DeepSeek-LLM; submitted findings to IEEE TAES as first author.</div>
-        </div>
-      </div>
-
-      <div class="exp-item">
-        <div class="exp-date">Aug · Oct 2025</div>
-        <div>
-          <div class="exp-role">Python Developer (Junior)</div>
-          <div class="exp-company">ALGORYC</div>
-          <div class="exp-desc">Worked on OpenHome, an AI-powered digital-twin SaaS voice assistant platform. Built a voice-controlled music retrieval feature using the Audius API — implementing an NLP-based intent parsing pipeline that converted voice queries to structured song requests with ~80% accuracy across 20+ test cases. Served as primary client liaison, leading bi-weekly demos and translating founder requirements directly into sprint-ready tasks.</div>
-        </div>
-      </div>
-
-      <div class="exp-item">
-        <div class="exp-date">Jun · Aug 2024</div>
-        <div>
-          <div class="exp-role">AI Developer Intern</div>
-          <div class="exp-company">UrduX – AskFast</div>
-          <div class="exp-desc">Fine-tuned Mistral-7B (Unsloth/QLoRA) for domain-specific NLP and built an evaluation pipeline to track model performance across training iterations. Built a full-stack admissions chatbot using React.js and Flask, owning end-to-end delivery: REST API design, LLM integration, CI/CD setup, and deployment.</div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<div class="container"><hr class="sep"></div>
-
-<section class="section" id="education">
-  <div class="container">
-    <div class="section-header">
-      <div class="section-number">05</div>
-      <span class="section-label">Education & Certifications</span>
-    </div>
-    <h2 class="section-title">Credentials</h2>
-
-    <div class="edu-row">
-      <div class="edu-icon-box">🎓</div>
-      <div class="edu-details">
-        <h3>Bachelor of Data Science</h3>
-        <p>FAST University, Islamabad · Sept 2021 – June 2025</p>
-        <div class="edu-award">⭐ Dean's List, Spring 2025 · Teaching Assistant & Lab Demonstrator</div>
-      </div>
-    </div>
-
-    <div class="cert-flex">
-      <div class="cert">
-        <div class="cert-icon">🏅</div>
-        <div>
-          <div class="cert-name">AI Agent Intensive Course</div>
-          <div class="cert-from">Google</div>
-        </div>
-      </div>
-      <div class="cert">
-        <div class="cert-icon">🏅</div>
-        <div>
-          <div class="cert-name">Neural Networks & Deep Learning</div>
-          <div class="cert-from">DeepLearning.AI</div>
-        </div>
-      </div>
-      <div class="cert">
-        <div class="cert-icon">🏅</div>
-        <div>
-          <div class="cert-name">Agile Foundations</div>
-          <div class="cert-from">LinkedIn Learning</div>
-        </div>
-      </div>
-      <div class="cert">
-        <div class="cert-icon">🏅</div>
-        <div>
-          <div class="cert-name">Data Analytics using Excel</div>
-          <div class="cert-from">Great Learning</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="container"><hr class="sep"></div>
-
-<section class="footer-cta">
-  <div class="container">
-    <h2>Let's Build Something Intelligent</h2>
-    <p class="sub">Open to Full Stack AI Engineer and AI/ML Engineer roles. I ship fast, take ownership, and love working directly with founders.</p>
-    <div class="footer-links">
-      <a href="mailto:fatimaduaa053@gmail.com" class="btn btn-primary">
-        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-        Email Me
-      </a>
-      <a href="https://linkedin.com/in/duaa-fatima-3b03ab260" class="btn btn-ghost">LinkedIn</a>
-      <a href="https://github.com/Duaa-Fatima" class="btn btn-ghost">GitHub</a>
-    </div>
-    <p class="footer-meta">fatimaduaa053@gmail.com · +92 335 8449585 · Rawalpindi, Pakistan</p>
-  </div>
-</section>
-
-<div style="height: 32px;"></div>
-
 </body>
 </html>
